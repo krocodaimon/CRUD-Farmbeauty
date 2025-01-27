@@ -9,4 +9,6 @@ import com.farmbeauty.farmbeauty.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	public List <Produto> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
+
+	public List<Produto> findByPrecoBetween(double precoMinimo, double precoMaximo);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -72,4 +73,17 @@ public class ProdutoController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		produtoRepository.deleteById(id);
 }
+	
+	@GetMapping("/preco")
+	public ResponseEntity<List<Produto>> getByPreco(
+	        @RequestParam("min") double precoMinimo, 
+	        @RequestParam("max") double precoMaximo) {
+	    List<Produto> produtos = produtoRepository.findByPrecoBetween(precoMinimo, precoMaximo);
+	    return ResponseEntity.ok(produtos);
+	}
+
+
+
+
+
 	}
