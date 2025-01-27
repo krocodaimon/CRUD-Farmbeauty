@@ -25,7 +25,20 @@ public class Produto {
 	@NotBlank(message = "O atributo nome é Obrigatório!")
 	@Size (min = 3, max = 30, message = "O atributo deve ter no mínimo 03 e no máximo 30 caracteres ")
 	private String nome;
+
+	@NotBlank(message = "O atributo marca é Obrigatório!")
+	@Size (min = 2, max = 30, message = "O atributo deve ter no mínimo 03 e no máximo 30 caracteres ")
+	private String marca;
 	
+	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
 	@Min(value = 0, message = "O preço não pode ser negativo.")
     @Max(value = 10000, message = "O preço não pode ser superior a 10.000.")
 	private Double preco;
